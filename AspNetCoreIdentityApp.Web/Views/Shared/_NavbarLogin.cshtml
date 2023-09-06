@@ -1,0 +1,26 @@
+﻿@using System.Security.Claims
+@if (User.Identity!.IsAuthenticated)
+{
+    <ul class="navbar-nav me-0">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">@User.Identity.Name</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-controller="Member" asp-action="Index">Profile</a></li>
+                <li><a class="dropdown-item" asp-controller="Member" asp-action="PasswordChange">Change Password</a></li>
+                <li><a class="dropdown-item" asp-controller="Member" asp-action="UserEdit">Edit Profile</a></li>
+                @if (User.HasClaim(x => x.Type == ClaimTypes.Role && x.Value == "admin"))
+                {
+                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-area="Admin">Admin</a></li>
+                }
+                <li><a class="dropdown-item" asp-route-returnurl="/Home/Index" asp-controller="Member" asp-action="LogOut">Log Out</a></li>
+                <li><a class="dropdown-item" asp-controller="Member" asp-action="Claims">Claims</a></li>
+            </ul>
+        </li>
+
+    </ul>
+}
+else
+{
+    <a class="btn btn-outline-success" asp-controller="" asp-action="SignUp">Sign Up</a>
+    <a class="btn btn-outline-success" asp-controller="" asp-action="SignIn">Sign In</a>
+}

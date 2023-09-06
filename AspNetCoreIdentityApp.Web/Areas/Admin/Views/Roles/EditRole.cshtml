@@ -1,0 +1,31 @@
+﻿@model RoleUpdateViewModel
+@{
+    ViewData["Title"] = "EditRole";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<h4>Create Role</h4>
+<hr />
+<div class="row">
+    <div asp-validation-summary="ModelOnly" class="text-danger">
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="EditRole" asp-controller="Roles" asp-area="Admin">
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Name of Role" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-outline-success">Update</button>
+            </div>
+        </form>
+    </div>
+</div>

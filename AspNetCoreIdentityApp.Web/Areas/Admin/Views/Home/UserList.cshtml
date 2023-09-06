@@ -1,0 +1,31 @@
+﻿@model List<AdminUserViewModel>
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Role Process</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
+                <td><a class="btn- btn-outline-primary" asp-controller="Roles" asp-action="AssignRoleToUser" asp-area="Admin" asp-route-id="@item.ID">Assign Role</a></td>
+                <td><user-role-names user-id="@item.ID" class="rounded mx-1"></user-role-names> </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

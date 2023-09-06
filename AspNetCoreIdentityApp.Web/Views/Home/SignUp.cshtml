@@ -1,0 +1,66 @@
+﻿@model SignUpViewModel
+@{
+    ViewData["Title"] = "SignUp";
+}
+@section Scripts
+    {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <h2>Sign Up</h2>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+
+        <form asp-controller="Home" asp-action="SignUp" method="post">
+            <div class="row mb-3">
+                <label for="UserName" class="col-md-4 col-form-label" asp-for="UserName"></label>
+                <div>
+                    <input type="text" asp-for="UserName" class="form-control" placeholder="UserName" />
+                    <span class="text-danger" asp-validation-for="UserName"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="Email" class="col-md-4 col-form-label" asp-for="Email"></label>
+                <div>
+                    <input type="text" asp-for="Email" class="form-control" placeholder="Email" />
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="Phone" class="col-md-4 col-form-label" asp-for="Phone"></label>
+                <div>
+                    <input type="text" asp-for="Phone" class="form-control" placeholder="Phone" />
+                    <span class="text-danger" asp-validation-for="Phone"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="Password" class="col-md-4 col-form-label" asp-for="Password"></label>
+                <div>
+                    <input asp-for="Password" class="form-control" placeholder="Password" />
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="PasswordConfirm" class="col-md-4 col-form-label" asp-for="PasswordConfirm"></label>
+                <div>
+                    <input asp-for="PasswordConfirm" class="form-control" placeholder="Password Confirm" />
+                    <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,35 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4 text-center">
+        <user-picture-thumbnail picture-url-tag="@Model.PictureUrl" class="rounded" style="width:200px"></user-picture-thumbnail>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-6 offset-md-3">
+        <h3>@User.Identity!.Name.ToString().ToUpper() INFO</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.UserName</td>
+                    <td>@Model.Email</td>
+                    <td>@Model.PhoneNumber</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

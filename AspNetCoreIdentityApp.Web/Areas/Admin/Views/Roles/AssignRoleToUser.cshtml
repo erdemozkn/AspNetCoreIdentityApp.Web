@@ -1,0 +1,37 @@
+﻿@model List<AssignRoleToUserViewModel>
+@{
+    ViewData["Title"] = "AssignRoleToUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<h4>Assign Role</h4>
+<hr />
+<div class="row">
+    <div asp-validation-summary="ModelOnly" class="text-danger">
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="AssignRoleToUser" asp-controller="Roles" asp-area="Admin" asp-route-id="@ViewBag.Id">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" asp-for="@Model[i].Status">
+                    <label class="form-check-label" for="gridCheck">
+                        @Model[i].Name.ToString()
+                    </label>
+                    <input type="hidden" asp-for="@Model[i].Name">
+                    <input type="hidden" asp-for="@Model[i].ID">
+                </div>
+            }
+            <div class="form-group" mt-3>
+                <input type="submit" value="Assign Role" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
